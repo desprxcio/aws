@@ -6,7 +6,12 @@ require('dotenv').config();
 
  module.exports = {
   client: "pg",
-  connection: process.env.DB_URL || process.env.DB_URL_LOCAL,
+  connection: process.env.DB_URL_LOCAL,
+  searchPath: 'public',
+  pool: {
+    min: 2,
+    max: 10
+  },
   migrations: {
     directory: "./db/migrations",
   },
