@@ -1,16 +1,11 @@
 require('dotenv').config();
 
-/**
- * @type { Object.<string, import("knex").Knex.Config> }
- */
-
  module.exports = {
-  client: "pg",
+  client: "postgres",
   connection: process.env.DB_URL_LOCAL,
-  searchPath: 'public',
   pool: {
-    min: 2,
-    max: 10
+    min: 0,
+    max: 15
   },
   migrations: {
     directory: "./db/migrations",
@@ -18,3 +13,4 @@ require('dotenv').config();
   seeds: {
     directory: "./db/seeds",
   },
+};
