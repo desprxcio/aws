@@ -7,7 +7,7 @@ import {
 } from "../firebase-config";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate, Link } from "react-router-dom";
-import "./register.css";
+import "./login.css";
 
 export default function Login({ setIsOpen }) {
   const [email, setEmail] = useState("");
@@ -23,7 +23,6 @@ export default function Login({ setIsOpen }) {
 
   return (
     <div id="login_block">
-      <Card>
         <Card.Body id="cardBody">
           <h1>Are we really strangers?</h1>
           <h2>Login</h2>
@@ -64,7 +63,6 @@ export default function Login({ setIsOpen }) {
             </Stack>
           </Form>
         </Card.Body>
-      </Card>
 
       <br></br>
       <br></br>

@@ -29,7 +29,6 @@ export default function Register() {
   return (
     <>
       <div id="login_block">
-        <Card>
           <Card.Body id="cardBody">
             <h1>Are we really strangers?</h1>
             <h2>Sign Up</h2>
@@ -78,13 +77,12 @@ export default function Register() {
               </Stack>
             </Form>
           </Card.Body>
-        </Card>
 
         <br></br>
         <br></br>
 
         <div>
-          Login<Link to="/">here!</Link>
+          Login <Link to="/">here!</Link>
         </div>
       </div>
     </>
