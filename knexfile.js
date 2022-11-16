@@ -1,5 +1,5 @@
 const path = require('path')
-require('dotenv').config({ path: path.resolve('/Users/bileltamouneit/Desktop/cc/aws/.env') });
+require('dotenv').config();
 
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
