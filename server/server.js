@@ -23,7 +23,7 @@ const server = () => {
     }
   });
 
-  app.post("/add-card", (req, res) => {
+  app.post("/game", (req, res) => {
     const { question } = req.body;
     db("cards")
       .insert({

@@ -32,7 +32,7 @@ export default function Game() {
   }
 
   async function saveCard() {
-    return await axios.post(`/add-card`, newCard);
+    return await axios.post(`/game`, newCard);
   }
 
   useEffect(() => {
@@ -52,8 +52,14 @@ export default function Game() {
               <Form.Control
                 type="string"
                 value={question}
-                onChange={(event) => setQuestion(event.target.value)}
-                placeholder="Question"
+                onChange={(event) => saveCard(event.target.value)}
+                placeholder="Question (saveCard function)"
+              />
+              <Form.Control
+                type="string"
+                value={question}
+                onChange={(event) => addCard(event.target.value)}
+                placeholder="Question (addCard function)"
               />
             </Form.Group>
           </Form>
