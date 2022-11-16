@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import {Button, Card, Form, Stack} from 'react-bootstrap';
+import React, { useEffect, useState } from "react";
+import { Button, Card, Form, Stack } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -7,13 +7,14 @@ import {
   registerWithEmailAndPassword,
   signInWithGoogle,
 } from "../firebase-config";
+import "./login.css";
 
 export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [user, loading, error] = useAuthState(auth);
-  const history = useNavigate();
+  const [user, loading] = useAuthState(auth);
+  const navigate = useNavigate();
 
   const register = () => {
     if (!name) alert("Please enter name");
@@ -21,78 +22,71 @@ export default function Register() {
   };
   useEffect(() => {
     if (loading) return;
-    if (user) history("/dashboard");
+    if (user) navigate("/dashboard");
+    // eslint-disable-next-line
   }, [user, loading]);
 
-
   return (
-  <>
-  <div id="login__wrapper" 
-  className="d-flex flex-column justify-content-center align-items-center">
-  <Card className="nes-container is-rounded">
-    <Card.Body>
-    <h2 className="text-center mb-4">Sign Up</h2>
-    <Form>
-      <Form.Group id="name">
-        <Form.Label> Full Name </Form.Label>
-        <Form.Control 
-        className = "nes-input is-success"
-        type="text"
-        value={name}
-        onChange = {(e)=> setName(e.target.value)}
-        placeholder="Name"
-        />
-      </Form.Group>
-      <br></br>
-      <Form.Group id="email">
-        <Form.Label> Email </Form.Label>
-        <Form.Control 
-        className="nes-input is-warning"
-        type="text" 
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="pw"
-        />
-      </Form.Group>
+    <>
+      <div id="login_block">
+        <Card>
+          <Card.Body id="cardBody">
+            <h1>Are we really strangers?</h1>
+            <h2>Sign Up</h2>
+            <Form>
+              <Form.Group className="form">
+                <Form.Label className="labels"> Full Name </Form.Label>
+                <Form.Control
+                  type="text"
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
+                  placeholder="Name"
+                />
+              </Form.Group>
+              <br></br>
+              <Form.Group className="form">
+                <Form.Label className="labels"> Email </Form.Label>
+                <Form.Control
+                  type="text"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  placeholder="Password"
+                />
+              </Form.Group>
 
-      <br></br>
-      <Form.Group id="password">
-        <Form.Label> Password </Form.Label>
-        <Form.Control
-        className="nes-input is-error"
-        type="password"
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Password"
-        />
-      </Form.Group>
+              <br></br>
+              <Form.Group className="form">
+                <Form.Label className="labels"> Password </Form.Label>
+                <Form.Control
+                  type="password"
+                  onChange={(event) => setPassword(event.target.value)}
+                  placeholder="Password"
+                />
+              </Form.Group>
 
-      <br></br>
-      <Stack gap={2} className="col-md-5 mx-auto">
-        <Button 
-        variant="outline-info"
-        size="sm"
-        className="w-100" 
-        onClick={register}> Sign Up</Button>
+              <br></br>
+              <Stack>
+                <Button className="btn btn-danger" onClick={register}>
+                  {" "}
+                  Sign Up
+                </Button>
+                <br></br>
 
-        <Button 
-        variant="outline-info"
-        size="sm"
-        className="w-100"  
-        onClick={signInWithGoogle}> 
-        Register with Google</Button>
+                <Button className="btn btn-danger" onClick={signInWithGoogle}>
+                  Register with Google
+                </Button>
+              </Stack>
+            </Form>
+          </Card.Body>
+        </Card>
 
-      </Stack>
-      
+        <br></br>
+        <br></br>
 
-     
-    </Form>
-    </Card.Body>
-  </Card>
-
-  <div>
-    Already have an account? <Link to="/">Login</Link> now.
-  </div>
-  </div>
-  </>)
-  
+        <div>
+          Login<Link to="/">here!</Link>
+        </div>
+      </div>
+    </>
+  );
 }

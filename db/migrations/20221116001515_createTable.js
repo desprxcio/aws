@@ -5,7 +5,7 @@
  exports.up = function (knex) {
     return knex.schema.createTable("cards", function (table) {
       table.increments("id").primary();
-      table.string("question", 64).notNullable();
+      table.string("question", 255).notNullable();
     });
   };
   
@@ -14,5 +14,5 @@
    * @returns { Promise<void> }
    */
   exports.down = function (knex) {
-    knex.schema.dropTable("cards");
+    return knex.schema.dropTable("cards");
   };

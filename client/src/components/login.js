@@ -7,22 +7,23 @@ import {
 } from "../firebase-config";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate, Link } from "react-router-dom";
-import "./login.css";
+import "./register.css";
 
 export default function Login({ setIsOpen }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
 
   useEffect(() => {
     setIsOpen(false);
     if (user) navigate("/dashboard");
+    // eslint-disable-next-line
   }, [user, loading]);
 
   return (
     <div id="login_block">
-      <Card id="card">
+      <Card>
         <Card.Body id="cardBody">
           <h1>Are we really strangers?</h1>
           <h2>Login</h2>
@@ -36,12 +37,12 @@ export default function Login({ setIsOpen }) {
                 placeholder="E-mail Address"
               />
             </Form.Group>
-            <br></br>
 
+            <br></br>
             <Form.Group className="form">
               <Form.Label className="labels"> Password </Form.Label>
               <Form.Control
-                value={password}
+                type={password}
                 onChange={(event) => setPassword(event.target.value)}
                 placeholder="Password"
               />
@@ -64,6 +65,7 @@ export default function Login({ setIsOpen }) {
           </Form>
         </Card.Body>
       </Card>
+
       <br></br>
       <br></br>
       <div>
