@@ -10,9 +10,10 @@ export default function AllCards() {
   }, []);
 
   async function showCards() {
+    console.log(cards)
     const fetchCards = await axios.get(`http://localhost:3000/cards`);
     setCards(fetchCards.data)
-    console.log(cards)
+ 
   }
 
   return (
