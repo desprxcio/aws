@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node ./server/index.js",
     "dev": "nodemon ./server/index.js",
-    "build": "npm install && npm run migrate && npm run seed",
+    "build": "npm install && npm run migrate && npm run seed && npm start",
     "migrate": "knex migrate:latest",
     "make:seed": "knex seed:make",
     "seed": "knex seed:run"
