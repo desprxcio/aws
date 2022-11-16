@@ -1,0 +1,23 @@
+.card {
+    color: #c10016;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-transform: uppercase;
+    font-family: "Biryani", sans-serif;
+    
+  }
+  
+  .big-card {
+    font-size: 25px;
+    width: 30vw;
+    height: 30vh;
+    margin: 5vh;
+    background-color: white;
+    color: #c10016;
+    border-radius: 50px;
+    filter: drop-shadow(0 0px 20px rgb(216, 216, 216));
+    box-shadow: 0 5px 5px 1px rgb(80, 80, 80);
+    padding: 50px;
+  }
+  

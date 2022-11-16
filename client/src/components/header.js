@@ -14,13 +14,10 @@ export default function NavBar({ isOpen }) {
 						</Navbar>
 						<Nav className="me-1">
 							<Link className="me-3" to="/game">
-								My cards
+								Game
 							</Link>
 							<Link className="me-3" onClick={logout}>
 								Log Out
-							</Link>
-							<Link className="me-3" to="/allCards">
-								allCards
 							</Link>
 						</Nav>
 					</Container>

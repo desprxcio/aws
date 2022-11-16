@@ -1,72 +1,61 @@
-import React, { useEffect, useState } from "react";
-import { auth, db } from "../firebase-config";
-import { query, collection, getDocs, where } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
-import { useAuthState } from "react-firebase-hooks/auth";
+import React, { useEffect, useState, useMemo } from "react";
 import axios from "axios";
-import { Button, Card, Form, Stack } from "react-bootstrap";
+import "./game.css";
+import "./Card.css";
 
 export default function Game() {
-  const [newCard, setNewCard] = useState({});
-  const [question, setQuestion] = useState("");
-  const [uid, setUid] = useState("");
-  const [user, loading] = useAuthState(auth);
-  const navigate = useNavigate();
+  const [deck, setDeck] = useState("");
 
   async function fetchQuestions() {
-    const fetchCards = await axios.get(`https://back-end-84er.onrender.com/cards`);
-    setQuestion(fetchCards.data)
-  }
-
-  useEffect(() => fetchQuestions)
-
-  const fetchUid = async () => {
-    try {
-      const q = query(collection(db, "users"), where("uid", "==", user?.uid));
-      const doc = await getDocs(q);
-      const data = doc.docs[0].data();
-      setUid(data.uid);
-    } catch (err) {
-      console.error(err);
-      alert("An error occured while fetching user data");
-    }
-  };
-
-  function addCard() {
-    setNewCard({
-      question: question,
-    });
-  }
-
-  async function saveCard() {
-    return await axios.post(`/game`, newCard);
+    const fetchCards = await axios.get(
+      `https://back-end-84er.onrender.com/cards`
+    );
+    setDeck(fetchCards.data);
   }
 
   useEffect(() => {
-    if (loading) return;
-    if (!user) return navigate("/dashboard");
-    fetchUid();
-  }, [user, loading]);
+    fetchQuestions();
+  }, []);
+
+  function handleDeck() {
+    let questions = [];
+    for (let i = 0; i < deck.length; i++) {
+      questions.push(deck[i].question);
+    }
+    return questions;
+  }
+
+  useEffect(() => {
+    handleDeck();
+  }, []);
+
+  let ntm = handleDeck();
+
+  const [currCard, setCurrCard] = useState(0);
+
+  function handleNextCard() {
+    const nextCard = currCard + 1;
+    if (nextCard < ntm.length) {
+      setCurrCard(nextCard);
+    } else {
+      console.log("end of the game");
+    }
+  }
+
+  const displayItem = useMemo(() => ntm[currCard], [ntm, currCard]);
+
+  useEffect((e) => {
+    handleNextCard();
+  }, []);
 
   return (
-    <div>
-      <Card>
-        <Card.Body>
-          <h1>Add a card!</h1>
-          <button type="button" onClick={ fetchQuestions }>PUSH ME</button>
-          <Form>
-            <Form.Group className="form">
-              <Form.Label className="labels"> Type your question here... </Form.Label>
-              <Form.Control
-                type="string"
-                value={question}
-                onChange={(event) => saveCard(event.target.value)}
-                placeholder="Question (saveCard function)"
-              />
-            </Form.Group>
-          </Form>
-        </Card.Body>
-      </Card>
+    <div className="App">
+      <div className="question">
+        <p styleName="big-card">{displayItem}</p>
+        <button className="next-card-button" onClick={() => handleNextCard()}>
+          next card
+        </button>
+      </div>
     </div>
   );
 }

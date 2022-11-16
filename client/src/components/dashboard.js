@@ -9,7 +9,7 @@ export default function Dashboard({ setIsOpen }) {
 	const [user, loading] = useAuthState(auth);
 	const [name, setName] = useState("");
 	const navigate = useNavigate();
-	let getUsername
+	let getUsername;
 	
 	useEffect(() => {
 		const getUsername = async () => {
@@ -35,7 +35,6 @@ export default function Dashboard({ setIsOpen }) {
 			<Card.Body id="cardBody">
 			  <h1>Are we really strangers?</h1>
 			  <h2>Hello {name}</h2>
-	
 				<Stack>
 				</Stack>
 			</Card.Body>
