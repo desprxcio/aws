@@ -5,15 +5,9 @@ import { Button, Card, Form } from "react-bootstrap";
 export default function AllCards() {
   const [cards, setCards] = useState([]);
 
-  useEffect(() => {
-    showCards();
-  }, []);
-
   async function showCards() {
-    console.log(cards)
     const fetchCards = await axios.get(`http://localhost:3000/cards`);
     setCards(fetchCards.data)
- 
   }
 
   return (

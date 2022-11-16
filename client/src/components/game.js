@@ -13,6 +13,13 @@ export default function Game() {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
 
+  async function fetchQuestions() {
+    const fetchCards = await axios.get(`https://back-end-84er.onrender.com/cards`);
+    setQuestion(fetchCards.data)
+  }
+
+  useEffect(() => fetchQuestions)
+
   const fetchUid = async () => {
     try {
       const q = query(collection(db, "users"), where("uid", "==", user?.uid));
@@ -46,6 +53,7 @@ export default function Game() {
       <Card>
         <Card.Body>
           <h1>Add a card!</h1>
+          <button type="button" onClick={ fetchQuestions }>PUSH ME</button>
           <Form>
             <Form.Group className="form">
               <Form.Label className="labels"> Type your question here... </Form.Label>
@@ -54,12 +62,6 @@ export default function Game() {
                 value={question}
                 onChange={(event) => saveCard(event.target.value)}
                 placeholder="Question (saveCard function)"
-              />
-              <Form.Control
-                type="string"
-                value={question}
-                onChange={(event) => addCard(event.target.value)}
-                placeholder="Question (addCard function)"
               />
             </Form.Group>
           </Form>
