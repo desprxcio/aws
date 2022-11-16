@@ -1,11 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const db = require("../db/knex");
+const path = require('path')
 
 const server = () => {
   const app = express();
 
   app.use(express.json());
+  app.use(express.static(path.resolve(__dirname, "../client/build")));
   app.use(bodyParser.urlencoded({ extended: false }));
 
   app.get("/", (req, res) => {
