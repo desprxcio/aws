@@ -38,6 +38,8 @@ export default function Dashboard({ setIsOpen }) {
 		  <Card>
 			<Card.Body>
 			  <h1>Hello {name}.
+			  <br></br>
+			  <br></br>
 			  Are we really strangers?</h1>
 				<Stack>
 				</Stack>

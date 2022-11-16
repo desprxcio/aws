@@ -18,12 +18,10 @@ export default function AddCard() {
   return (
     <div>
           <Form>
-              <Button
-                className="btn btn-danger"
-                type="button"
+              <input
                 onClick={postCard}
               >Add this card!
-              </Button>
+              </input>
           </Form>
     </div>
   );
