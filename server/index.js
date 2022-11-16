@@ -1,5 +1,5 @@
 const server = require('./server.js')
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const serverSetup = server();
 
 (()=> {

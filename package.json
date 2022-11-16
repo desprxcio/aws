@@ -8,11 +8,11 @@
     "react-router-dom": "^6.4.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "node ./server/index.js",
+    "dev": "nodemon ./server/index.js",
+    "build": "npm install && npm run migrate && npm run seed && cd client && npm install && npm run build",
     "migrate": "knex migrate:latest",
+    "make:seed": "knex seed:make",
     "seed": "knex seed:run"
   }
 }
