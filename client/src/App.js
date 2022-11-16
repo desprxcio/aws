@@ -6,8 +6,9 @@ import Login from "./components/login"
 import Register from './components/register';
 import Dashboard from './components/dashboard';
 import NavBar from './components/header';
-import game from './components/game'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Game from "./components/game";
+import AllCards from "./components/allCards";
 
 
 function App() {
@@ -20,7 +21,8 @@ function App() {
           <Route path = {'/'} element = {<Login setIsOpen={setIsOpen}/>}/>
           <Route path = {'/register'} element = {<Register/>}/>
           <Route path = {'/dashboard'} element = {<Dashboard setIsOpen={setIsOpen}/>}/>
-          <Route path = {'/game'} element = {<game setIsOpen={setIsOpen}/>}/>
+          <Route path = {'/game'} element = {<Game/>}/>
+          <Route path = {'/allCards'} element = {<AllCards/>}/>
         </Routes>
     </div>
   );

@@ -19,6 +19,9 @@ export default function NavBar({ isOpen }) {
 							<Link className="me-3" onClick={logout}>
 								Log Out
 							</Link>
+							<Link className="me-3" to="/allCards">
+								allCards
+							</Link>
 						</Nav>
 					</Container>
 				</Navbar>
