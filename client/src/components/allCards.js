@@ -10,7 +10,7 @@ export default function AllCards() {
   }, []);
 
   async function showCards() {
-    const fetchCards = await axios.get(`https://back-end-84er.onrender.com/cards`);
+    const fetchCards = await axios.get(`http://localhost:3000/cards`);
     setCards(fetchCards.data)
     console.log(cards)
   }
