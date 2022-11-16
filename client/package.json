@@ -2,7 +2,7 @@
   "name": "awrs",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://desprxcio.github.io/aws/",
+  "homepage": "https://desprxcio.github.io/",
   "dependencies": {
     "@types/jest": "^29.2.1",
     "@types/react": "^18.0.24",
@@ -20,8 +20,6 @@
     "react-scripts": "5.0.1"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
