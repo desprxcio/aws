@@ -8,7 +8,7 @@ import Dashboard from './components/dashboard';
 import NavBar from './components/header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Game from "./components/game";
-import AllCards from "./components/allCards";
+import AddCard from "./components/AddCard";
 
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
           <Route path = {'/register'} element = {<Register/>}/>
           <Route path = {'/dashboard'} element = {<Dashboard setIsOpen={setIsOpen}/>}/>
           <Route path = {'/game'} element = {<Game/>}/>
-          <Route path = {'/allCards'} element = {<AllCards/>}/>
+          <Route path = {'/addCard'} element = {<AddCard/>}/>
         </Routes>
     </div>
   );

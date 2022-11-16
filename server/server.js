@@ -23,7 +23,7 @@ const server = () => {
     }
   });
 
-  app.post("/game", (req, res) => {
+  app.post("/addCard", (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
     const { question } = req.body;
     db("cards")
@@ -31,7 +31,7 @@ const server = () => {
         question: question,
       })
       .then(() => {
-        return res.status(200).send("test");
+        return res.status(200).send("sent");
       })
       .catch((err) => {
         res.status(500).send(err);

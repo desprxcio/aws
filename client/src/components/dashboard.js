@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { auth, db } from "../firebase-config";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import { Button, Card, Form, Stack } from "react-bootstrap";
+import "./dashboard.css"
+import AddCard from "./AddCard";
 
 export default function Dashboard({ setIsOpen }) {
 	const [user, loading] = useAuthState(auth);
@@ -29,14 +31,22 @@ export default function Dashboard({ setIsOpen }) {
 		getUsername();
 	}, [user, loading, navigate, getUsername, setIsOpen]);
 
+	
+
 	return (
 		<div id="main_block">
 		  <Card>
-			<Card.Body id="cardBody">
-			  <h1>Are we really strangers?</h1>
-			  <h2>Hello {name}</h2>
+			<Card.Body>
+			  <h1>Hello {name}.
+			  Are we really strangers?</h1>
 				<Stack>
 				</Stack>
+			</Card.Body>
+		  </Card>
+		  <Card>
+			<Card.Body>
+			  <h1>Add extra cards?</h1>
+			  <AddCard></AddCard>
 			</Card.Body>
 		  </Card>
 		</div>

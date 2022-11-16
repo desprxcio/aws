@@ -2,6 +2,7 @@ import React, { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import "./game.css";
 import "./Card.css";
+import { Card } from "react-bootstrap";
 
 export default function Game() {
   const [deck, setDeck] = useState("");
@@ -51,7 +52,8 @@ export default function Game() {
   return (
     <div className="App">
       <div className="question">
-        <p styleName="big-card">{displayItem}</p>
+      <div className="title">are we strangers?</div>
+        <Card styleName="big-card">{displayItem}</Card>
         <button className="next-card-button" onClick={() => handleNextCard()}>
           next card
         </button>
