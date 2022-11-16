@@ -22,7 +22,7 @@ export default function AllCards() {
           <Form>
               <Button
                 className="btn btn-danger"
-                onClick={() => showCards}
+                onClick={showCards}
               >
               </Button>
           </Form>
